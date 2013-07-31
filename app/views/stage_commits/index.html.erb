@@ -1,0 +1,17 @@
+<h1>Non Released Stage Commits</h1>
+
+  <table border=1 style="width: 600px">
+    <tr><td colspan=3>Commit:</td></tr>
+    <tr> 
+      <td><%= @git_commit.commit_stamp.to_datetime.to_formatted_s(:short)  %></td>
+      <td><%= @git_commit.sha[0..7] %></td>
+      <td><%= @git_commit.developer %></td>
+    </tr>
+    <tr>
+      <td colspan=3><%= @git_commit.message %></td> </tr>
+    <tr><td colspan=3>
+    </td>
+    </tr>
+  </table>
+  <br>
+  <%= render 'form' %>
