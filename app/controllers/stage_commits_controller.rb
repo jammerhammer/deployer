@@ -5,9 +5,9 @@ class StageCommitsController < ApplicationController
   # GET /stage_commits
   # GET /stage_commits.json
   def index
-    @git_commit = GitHubber.all.last
+    @git_commit = GitHubber.all.first
 
-    @stage_commit = StageCommit.new
+@stage_commit = StageCommit.new
   end
 
   def update 
@@ -29,4 +29,17 @@ class StageCommitsController < ApplicationController
       end
     end
   end
+
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_stage_commit
+    @bowl = StageCommit.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def stage_commit_params
+    params.require(:stage_commit).permit(:developer)
+  end
+
+
 end

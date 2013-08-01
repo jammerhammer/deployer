@@ -9,9 +9,12 @@
     </tr>
     <tr>
       <td colspan=3><%= @git_commit.message %></td> </tr>
-    <tr><td colspan=3>
-    </td>
+    <tr>
+     <td><a href="http://www.staging.uslegalforms.com" target:"_blank">Staging Preview</a></td>
+     <td><a href="#<%=@git_commit.sha%>" class="review_button" data-sha="#<%=@git_commit.sha%>">Review</a></td>
     </tr>
   </table>
   <br>
-  <%= render 'form' %>
+  <%= render 'form', :git_commit => @git_commit%>
+
+
