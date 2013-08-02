@@ -1,0 +1,31 @@
+<div id="<%=git_commit.sha%>" class="commit_form">
+<%= form_for(@stage_commit ) do |f| %>
+  <% if @stage_commit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stage_commit.errors.count, "error") %> prohibited this stage_commit from being saved:</h2>
+
+      <ul>
+      <% @stage_commit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :sha , :value => git_commit.sha%>
+    <%= f.hidden_field :developer, :value => git_commit.developer %>
+    <%= f.hidden_field :email , :value => git_commit.email%>
+    <%= f.hidden_field :commit_stamp, :value => git_commit.commit_stamp %>
+    <%= f.hidden_field :approved %>
+  <div class="field">
+    <%= f.label :reviewer %>
+    <%= f.text_field :approver %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment , :class => 'comment_input'%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

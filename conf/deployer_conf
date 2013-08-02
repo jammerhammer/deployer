@@ -1,0 +1,33 @@
+<VirtualHost deployer.ging.uslegalforms.com:80>
+  ServerName  deployer.staging.uslegalforms.com
+  ServerAdmin webmaster@uslegalforms.com
+
+  # Indexes + Directory Root.
+  DocumentRoot /srv/vhosts/deployer/current/site/app
+  DirectoryIndex index.html index.htm index.php
+
+  # Logfiles
+  ErrorLog  /srv/vhosts/deployer/statistics/logs/error.log
+  CustomLog /srv/vhosts/deployer/statistics/logs/access.log combined
+
+  # Error Documents
+  ErrorDocument 401 /error401.html
+  ErrorDocument 404 /error404.html
+
+  # Directory Permissions
+  <Directory /srv/vhosts/deployer/current/site/app/>
+    Options Includes -Indexes ExecCGI SymLinksIfOwnerMatch
+  </Directory>
+  
+  # File Types
+  <Files products>
+    ForceType application/x-httpd-php
+  </Files>
+
+  <Files browseforms>
+    ForceType application/x-httpd-php
+  </Files>
+
+  # kbb 2010.12.13 -- process htm as php to move away from apache SSI
+  AddType application/x-httpd-php .php .htm .html
+</VirtualHost>
