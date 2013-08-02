@@ -5,15 +5,15 @@ class StageCommitsController < ApplicationController
   # GET /stage_commits
   # GET /stage_commits.json
   def index
-    @git_commit = GitHubber.all.first
-
-@stage_commit = StageCommit.new
+    @git_commits = GitHubber.all
+    @stage_commit = StageCommit.new
   end
 
-  def update 
+  def update
   end
 
-
+  def show
+  end
   # POST /stage_commits
   # POST /stage_commits.json
   def create
@@ -21,6 +21,7 @@ class StageCommitsController < ApplicationController
 
     respond_to do |format|
       if @stage_commit.save
+        GitHubber.promote_to_prod(@stage_commit.sha)
         format.html { redirect_to @stage_commit, notice: 'Stage commit was successfully created.' }
         format.json { render action: 'show', status: :created, location: @stage_commit }
       else
@@ -33,12 +34,12 @@ class StageCommitsController < ApplicationController
 private
   # Use callbacks to share common setup or constraints between actions.
   def set_stage_commit
-    @bowl = StageCommit.find(params[:id])
+    @stage_commit = StageCommit.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def stage_commit_params
-    params.require(:stage_commit).permit(:developer)
+    params.require(:stage_commit).permit(:sha,:email, :commit_stamp, :approved, :approver, :comment, :developer)
   end
 
 
