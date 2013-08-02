@@ -1,0 +1,15 @@
+defaults: &defaults
+  login: 'uslegaldeploy'
+  password: 'GitGotGone!123'
+  repo_path: 'uslegal/uslegalforms'
+  repo_ssh_url: 'git@github.com:UsLegal/UsLegalForms.git'
+  local_repo: '/Users/jwoodlee/code/uslegalforms'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
