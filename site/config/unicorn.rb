@@ -25,7 +25,7 @@ if env == "production"
   working_directory "/srv/vhosts/deployer/current/site"
 
   # feel free to point this anywhere accessible on the filesystem
-  user 'deployer', 'staff'
+  user 'deploy', 'staff'
   shared_path = "/srv/vhosts/deployer/statistics/logs/unicorn"
 
   stderr_path "#{shared_path}/unicorn.stderr.log"
