@@ -32,8 +32,9 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: deployer_production
+  database: deployment
   pool: 5
-  username: root
-  password:
+  username: deployment
+  password: looLe5Shai1shohzohtiQu4Ooy3xohD1
+  host: db01.priv.uslegal.com
   socket: /tmp/mysql.sock
