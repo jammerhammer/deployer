@@ -3,7 +3,7 @@ defaults: &defaults
   password: 'GitGotGone!123'
   repo_path: 'uslegal/uslegalforms'
   repo_ssh_url: 'git@github.com:UsLegal/UsLegalForms.git'
-  local_repo: '/Users/jwoodlee/code/uslegalforms'
+  local_repo: '/home/deploy/code/UsLegalForms'
 
 development:
   <<: *defaults
