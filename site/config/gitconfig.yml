@@ -1,9 +1,9 @@
 defaults: &defaults
-  login: 'uslegaldeploy'
-  password: 'GitGotGone!123'
-  repo_path: 'uslegal/uslegalforms'
-  repo_ssh_url: 'git@github.com:UsLegal/UsLegalForms.git'
-  local_repo: '/home/deploy/code/UsLegalForms'
+  login: '<%= ENV["GIT_LOGIN"] %>'
+  password: '<%= ENV["GIT_PASS"] %>'
+  repo_path: '<%= ENV["GIT_REPO"] %>'
+  repo_ssh_url: '<%= ENV["GIT_SSH_URL"] %>'
+  local_repo: '<%= ENV["GIT_LOCAL_REPO"] %>'
 
 development:
   <<: *defaults
