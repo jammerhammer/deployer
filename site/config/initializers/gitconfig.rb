@@ -1,1 +1,1 @@
-GitConfig = YAML.load_file("#{Rails.root}/config/gitconfig.yml")[Rails.env]
+GitConfig = YAML.load(ERB.new(File.read("#{Rails.root}/config/gitconfig.yml")).result)[Rails.env]
